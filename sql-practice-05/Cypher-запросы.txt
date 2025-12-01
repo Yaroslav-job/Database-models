@@ -1,0 +1,13 @@
+#Тестовый запрос
+
+MATCH (n) RETURN n LIMIT 50;
+
+
+
+#Поиск пути между двумя узлами
+
+MATCH (a0 {name: "0"}), (a1 {name: "10"}),
+      p = shortestPath((a0)-[*]->(a1))
+RETURN p,
+       length(p) AS edges_count,
+       size(nodes(p)) - 2 AS inner_vertices;
